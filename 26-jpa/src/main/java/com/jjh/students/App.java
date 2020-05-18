@@ -20,10 +20,10 @@ public class App {
 		
 		
 		// Create a new Student
-//		em.getTransaction().begin();
-//        StudentImpl s1 = new StudentImpl(7, "Bill", "John", "Games", "bj@my.com");
-//        em.persist(s1);
-//        em.getTransaction().commit();
+		em.getTransaction().begin();
+        Student s1 = new Student(7, "Bill", "John", "Games", "bj@my.com");
+        em.persist(s1);
+        em.getTransaction().commit();
         
 		System.out.println("Final All students");
 		String jql = "SELECT e FROM Student e";
@@ -32,6 +32,8 @@ public class App {
 		for (Student s : results) {
 			System.out.println(s);	
 		}
+		
+		em.remove(s1);
 		
 		
 		System.out.println("Done");
