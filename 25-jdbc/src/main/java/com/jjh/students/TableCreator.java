@@ -7,9 +7,10 @@ import java.sql.Statement;
 
 public class TableCreator {
 	public static void main(String[] args) {
-		try {
-			String url = "jdbc:mysql://localhost/uni-database";
-            Connection conn = DriverManager.getConnection(url,"user", "user123");
+		String user = "user";
+		String pwd = "user123";
+		String url = "jdbc:mysql://localhost/uni-database";
+		try (Connection conn = DriverManager.getConnection(url,user,pwd)) {
 			Statement st = conn.createStatement();
 			st.executeUpdate("CREATE TABLE addresses (name char(15), address char(3))");
 			st.executeUpdate("INSERT INTO addresses (name, address) VALUES('John', 'C46')");
